@@ -5080,6 +5080,38 @@ __webpack_require__.r(__webpack_exports__);
 
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
+document.addEventListener('alpine:init', function () {
+  alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('productList', function () {
+    return {
+      cartItems: [],
+      cartItemCount: 0,
+      notification: {
+        show: false,
+        message: null
+      },
+      timeout: null,
+      watchlistCount: 0,
+      addToCart: function addToCart() {
+        this.cartItemCount++;
+        this.showNotification("The Item was successfully added into your cart");
+      },
+      addToWatchlist: function addToWatchlist() {
+        this.watchlistCount++;
+        this.showNotification("The Item was successfully added in your watchlist");
+      },
+      showNotification: function showNotification(message) {
+        var _this = this;
+
+        this.notification.show = true;
+        this.notification.message = message;
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(function () {
+          _this.notification.show = false;
+        }, 3000);
+      }
+    };
+  });
+});
 alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].start();
 
 /***/ }),
