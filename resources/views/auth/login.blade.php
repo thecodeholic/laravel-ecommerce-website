@@ -58,10 +58,8 @@
             <a href="{{route('password.request')}}" class="text-sm text-purple-700 hover:text-purple-600">Forgot
                 Password?</a>
         </div>
-        <button
-            class="btn-primary bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 w-full"
-        >
+        <x-button>
             Login
-        </button>
+        </x-button>
     </form>
 </x-app-layout>
