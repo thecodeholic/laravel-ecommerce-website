@@ -5,9 +5,6 @@
         </a>
     </x-slot>
 
-    <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4" :errors="$errors"/>
-
     <form
         action="{{ route('register') }}"
         method="post"
@@ -24,21 +21,25 @@
             >login with existing account</a
             >
         </p>
+
+        <!-- Validation Errors -->
+        <x-auth-validation-errors class="mb-4" :errors="$errors"/>
+
         <div class="mb-4">
             <x-input id="name" class="block mt-1 w-full" type="text" name="name" placeholder="Your Name"
-                     :value="old('name')" required autofocus/>
+                     :value="old('name')" autofocus/>
         </div>
         </p>
         <div class="mb-4">
             <x-input id="email" class="block mt-1 w-full" type="email" name="email" placeholder="Your Email"
-                     :value="old('email')" required/>
+                     :value="old('email')"/>
         </div>
         <div class="mb-4">
             <x-input id="password" class="block mt-1 w-full"
                      type="password"
                      name="password"
                      placeholder="Password"
-                     required autocomplete="new-password"/>
+                      autocomplete="new-password"/>
         </div>
         </div>
         <div class="mb-4">
@@ -46,7 +47,7 @@
                      type="password"
                      name="password_confirmation"
                      placeholder="Repeat Password"
-                     required/>
+                     />
         </div>
 
         <x-button>
