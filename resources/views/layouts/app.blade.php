@@ -9,28 +9,38 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script defer src="{{ asset('js/app.js') }}"></script>
+
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 </head>
-<body x-data="productList">
+<body>
 @include('layouts.navigation')
 
 <main class="p-5">
     {{ $slot }}
 </main>
 
+<!-- Toast -->
 <div
-    class="fixed flex justify-between items-center left-1/2 top-16 -translate-x-1/2 z-40 shadow-xl bg-green-600 text-white py-3 px-4 rounded"
-    x-show="notification.show"
-    style="display: none"
+    x-data="toast"
+    x-show="visible"
+    x-transition
+    x-cloak
+    @notify.window="show($event.detail.message)"
+    class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
 >
-    <span x-text="notification.message"></span>
+    <div class="font-semibold" x-text="message"></div>
     <button
-        class="w-6 h-6 ml-4 flex justify-center items-center rounded-full transition-colors hover:bg-black/20"
-        @click="notification.show = false"
+        @click="close"
+        class="absolute flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
     >
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
+            class="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -43,6 +53,14 @@
             />
         </svg>
     </button>
+    <!-- Progress -->
+    <div>
+        <div
+            class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
+            :style="{'width': `${percent}%`}"
+        ></div>
+    </div>
 </div>
+<!--/ Toast -->
 </body>
 </html>

@@ -1,6 +1,117 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@alpinejs/collapse/dist/module.esm.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@alpinejs/collapse/dist/module.esm.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ module_default)
+/* harmony export */ });
+// packages/collapse/src/index.js
+function src_default(Alpine) {
+  Alpine.directive("collapse", collapse);
+  collapse.inline = (el, {modifiers}) => {
+    if (!modifiers.includes("min"))
+      return;
+    el._x_doShow = () => {
+    };
+    el._x_doHide = () => {
+    };
+  };
+  function collapse(el, {modifiers}) {
+    let duration = modifierValue(modifiers, "duration", 250) / 1e3;
+    let floor = modifierValue(modifiers, "min", 0);
+    let fullyHide = !modifiers.includes("min");
+    if (!el._x_isShown)
+      el.style.height = `${floor}px`;
+    if (!el._x_isShown && fullyHide)
+      el.hidden = true;
+    if (!el._x_isShown)
+      el.style.overflow = "hidden";
+    let setFunction = (el2, styles) => {
+      let revertFunction = Alpine.setStyles(el2, styles);
+      return styles.height ? () => {
+      } : revertFunction;
+    };
+    let transitionStyles = {
+      transitionProperty: "height",
+      transitionDuration: `${duration}s`,
+      transitionTimingFunction: "cubic-bezier(0.4, 0.0, 0.2, 1)"
+    };
+    el._x_transition = {
+      in(before = () => {
+      }, after = () => {
+      }) {
+        if (fullyHide)
+          el.hidden = false;
+        if (fullyHide)
+          el.style.display = null;
+        let current = el.getBoundingClientRect().height;
+        el.style.height = "auto";
+        let full = el.getBoundingClientRect().height;
+        if (current === full) {
+          current = floor;
+        }
+        Alpine.transition(el, Alpine.setStyles, {
+          during: transitionStyles,
+          start: {height: current + "px"},
+          end: {height: full + "px"}
+        }, () => el._x_isShown = true, () => {
+          if (el.style.height == `${full}px`) {
+            el.style.overflow = null;
+          }
+        });
+      },
+      out(before = () => {
+      }, after = () => {
+      }) {
+        let full = el.getBoundingClientRect().height;
+        Alpine.transition(el, setFunction, {
+          during: transitionStyles,
+          start: {height: full + "px"},
+          end: {height: floor + "px"}
+        }, () => el.style.overflow = "hidden", () => {
+          el._x_isShown = false;
+          if (el.style.height == `${floor}px` && fullyHide) {
+            el.style.display = "none";
+            el.hidden = true;
+          }
+        });
+      }
+    };
+  }
+}
+function modifierValue(modifiers, key, fallback) {
+  if (modifiers.indexOf(key) === -1)
+    return fallback;
+  const rawValue = modifiers[modifiers.indexOf(key) + 1];
+  if (!rawValue)
+    return fallback;
+  if (key === "duration") {
+    let match = rawValue.match(/([0-9]+)ms/);
+    if (match)
+      return match[1];
+  }
+  if (key === "min") {
+    let match = rawValue.match(/([0-9]+)px/);
+    if (match)
+      return match[1];
+  }
+  return rawValue;
+}
+
+// packages/collapse/builds/module.js
+var module_default = src_default;
+
+
+
+/***/ }),
+
 /***/ "./node_modules/alpinejs/dist/module.esm.js":
 /*!**************************************************!*\
   !*** ./node_modules/alpinejs/dist/module.esm.js ***!
@@ -5077,37 +5188,193 @@ module.exports = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /* harmony import */ var alpinejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/module.esm.js");
+/* harmony import */ var _alpinejs_collapse__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @alpinejs/collapse */ "./node_modules/@alpinejs/collapse/dist/module.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
+
+
+alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].plugin(_alpinejs_collapse__WEBPACK_IMPORTED_MODULE_2__["default"]);
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"];
-document.addEventListener('alpine:init', function () {
-  alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data('productList', function () {
+document.addEventListener("alpine:init", function () {
+  alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].store("header", {
+    cartItemsObject: {},
+    watchingItems: [],
+
+    get watchlistItems() {
+      return this.watchingItems.length;
+    },
+
+    get cartItems() {
+      return Object.values(this.cartItemsObject).reduce(function (accum, next) {
+        return accum + parseInt(next.quantity);
+      }, 0);
+    }
+
+  });
+  alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data("toast", function () {
     return {
-      cartItems: [],
-      cartItemCount: 0,
-      notification: {
-        show: false,
-        message: null
-      },
+      visible: false,
+      delay: 5000,
+      percent: 0,
+      interval: null,
       timeout: null,
-      watchlistCount: 0,
-      addToCart: function addToCart() {
-        this.cartItemCount++;
-        this.showNotification("The Item was successfully added into your cart");
+      message: null,
+      close: function close() {
+        this.visible = false;
+        clearInterval(this.interval);
       },
-      addToWatchlist: function addToWatchlist() {
-        this.watchlistCount++;
-        this.showNotification("The Item was successfully added in your watchlist");
-      },
-      showNotification: function showNotification(message) {
+      show: function show(message) {
         var _this = this;
 
-        this.notification.show = true;
-        this.notification.message = message;
-        clearTimeout(this.timeout);
+        this.visible = true;
+        this.message = message;
+
+        if (this.interval) {
+          clearInterval(this.interval);
+          this.interval = null;
+        }
+
+        if (this.timeout) {
+          clearTimeout(this.timeout);
+          this.timeout = null;
+        }
+
         this.timeout = setTimeout(function () {
-          _this.notification.show = false;
-        }, 3000);
+          _this.visible = false;
+          _this.timeout = null;
+        }, this.delay);
+        var startDate = Date.now();
+        var futureDate = Date.now() + this.delay;
+        this.interval = setInterval(function () {
+          var date = Date.now();
+          _this.percent = (date - startDate) * 100 / (futureDate - startDate);
+
+          if (_this.percent >= 100) {
+            clearInterval(_this.interval);
+            _this.interval = null;
+          }
+        }, 30);
+      }
+    };
+  });
+  alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data("productItem", function (product) {
+    return {
+      id: product.id,
+      product: product,
+      quantity: 1,
+
+      get watchlistItems() {
+        return this.$store.watchlistItems;
+      },
+
+      addToWatchlist: function addToWatchlist() {
+        if (this.isInWatchlist()) {
+          this.$store.header.watchingItems.splice(this.$store.header.watchingItems.findIndex(function (p) {
+            return p.id === product.id;
+          }), 1);
+          this.$dispatch("notify", {
+            message: "The item was removed from your watchlist"
+          });
+        } else {
+          this.$store.header.watchingItems.push(product);
+          this.$dispatch("notify", {
+            message: "The item was added into the watchlist"
+          });
+        }
+      },
+      isInWatchlist: function isInWatchlist() {
+        return this.$store.header.watchingItems.find(function (p) {
+          return p.id === product.id;
+        });
+      },
+      addToCart: function addToCart(id) {
+        var quantity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+        this.$store.header.cartItemsObject[id] = this.$store.header.cartItemsObject[id] || _objectSpread(_objectSpread({}, product), {}, {
+          quantity: 0
+        });
+        this.$store.header.cartItemsObject[id].quantity = parseInt(this.$store.header.cartItemsObject[id].quantity) + parseInt(quantity);
+        this.$dispatch("notify", {
+          message: "The item was added into the cart"
+        });
+      },
+      removeItemFromCart: function removeItemFromCart() {
+        delete this.$store.header.cartItemsObject[this.id];
+        this.$dispatch("notify", {
+          message: "The item was removed from cart"
+        });
+      },
+      removeFromWatchlist: function removeFromWatchlist() {
+        var _this2 = this;
+
+        this.$store.header.watchingItems.splice(this.$store.header.watchingItems.findIndex(function (p) {
+          return p.id === _this2.id;
+        }), 1);
+      }
+    };
+  });
+  alpinejs__WEBPACK_IMPORTED_MODULE_1__["default"].data("signupForm", function () {
+    return {
+      defaultClasses: "focus:ring-purple-500 focus:border-purple-500",
+      errorClasses: "border-red-600 focus:border-red-600 ring-1 ring-red-600 focus:ring-red-600",
+      successClasses: "border-emerald-500 focus:border-emerald-500 ring-1 ring-emerald-500 focus:ring-emerald-500",
+      form: {
+        name: "",
+        email: "",
+        password: "",
+        password_repeat: ""
+      },
+      errors: {
+        name: "",
+        email: "",
+        password: "",
+        password_repeat: ""
+      },
+      submit: function submit() {
+        console.log(this.form);
+        this.validateName();
+        this.validateEmail();
+        this.validatePassword();
+        this.validatePasswordRepeat();
+      },
+      validateName: function validateName() {
+        this.errors.name = "";
+
+        if (!this.form.name) {
+          this.errors.name = "This field is required";
+        } else if (this.form.name.length < 2) {
+          this.errors.name = "The name should be at least two characters";
+        }
+      },
+      validateEmail: function validateEmail() {
+        this.errors.email = "";
+
+        if (!this.form.email) {
+          this.errors.email = "This field is required";
+        } else if (!this.validateEmailWithRegex()) {
+          this.errors.email = "This must be a valid email field";
+        }
+      },
+      validateEmailWithRegex: function validateEmailWithRegex() {
+        return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.form.email);
+      },
+      validatePassword: function validatePassword() {
+        this.errors.password = "";
+
+        if (!this.form.password) {
+          this.errors.password = "This field is required";
+        }
+      },
+      validatePasswordRepeat: function validatePasswordRepeat() {
+        this.errors.password_repeat = "";
+
+        if (!this.form.password_repeat) {
+          this.errors.password_repeat = "This field is required";
+        }
       }
     };
   });

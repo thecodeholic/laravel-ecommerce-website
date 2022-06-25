@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@alpinejs/collapse": "^3.10.2",
         "@tailwindcss/forms": "^0.4.0",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
