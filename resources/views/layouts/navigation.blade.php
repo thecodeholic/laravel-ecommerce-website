@@ -13,7 +13,7 @@
         <ul>
             <li>
                 <a
-                    href="/src/index.html"
+                    href="{{ route('home') }}"
                     class="block py-2 px-3 transition-colors hover:bg-slate-800"
                 >Home</a
                 >
@@ -246,7 +246,7 @@
         <ul class="grid grid-flow-col">
             <li>
                 <a
-                    href="/src/index.html"
+                    href="{{ route('home') }}"
                     class="block py-navbar-item px-navbar-item hover:bg-slate-900"
                 >Home</a
                 >
