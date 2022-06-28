@@ -31,17 +31,13 @@
         <p>{{$product->title}}</p>
     </div>
     <div class="mb-3">
+        <h3 class="font-semibold text-lg">Slug</h3>
+        <p>{{$product->slug}}</p>
+    </div>
+    <div class="mb-3">
         <h3 class="font-semibold text-lg">Description</h3>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto asperiores culpa cum deleniti
-            ducimus earum excepturi illo iste nemo nisi odio odit quod recusandae repellat reprehenderit, sequi totam
-            vero.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto asperiores culpa cum deleniti
-            ducimus earum excepturi illo iste nemo nisi odio odit quod recusandae repellat reprehenderit, sequi totam
-            vero.
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam architecto asperiores culpa cum deleniti
-            ducimus earum excepturi illo iste nemo nisi odio odit quod recusandae repellat reprehenderit, sequi totam
-            vero.
+            {{$product->description}}
         </p>
     </div>
     <div class="mb-3">

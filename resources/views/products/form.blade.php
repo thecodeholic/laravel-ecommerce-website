@@ -3,7 +3,7 @@
     <x-input id="product_title"
              class="block mt-1 w-full"
              type="text"
-             :value="$product->title"
+             :value="old('title') ?: $product->title"
              name="title"/>
 </div>
 
@@ -12,14 +12,14 @@
     <x-textarea id="product_description"
                 class="block mt-1 w-full"
                 type="text"
-                name="description">{{$product->description}}</x-textarea>
+                name="description">{{old('description') ?: $product->description}}</x-textarea>
 </div>
 
 <div class="mb-3">
     <label for="product_price">Price</label>
     <x-input id="product_price"
              type="number"
-             :value="$product->price"
+             :value="old('price') ?: $product->price"
              class="block mt-1 w-full"
              name="price"></x-input>
 </div>
@@ -28,7 +28,7 @@
     <label for="discount_pct">Discount %</label>
     <x-input id="discount_pct"
              type="number"
-             :value="$product->discount_pct"
+             :value="old('discount_pct') ?: $product->discount_pct"
              class="block mt-1 w-full"
              name="discount_pct"></x-input>
 </div>
@@ -37,7 +37,7 @@
     <label for="discounted_price">Discounted Price</label>
     <x-input id="discounted_price"
              type="number"
-             :value="$product->discounted_price"
+             :value="old('discounted_price') ?: $product->discounted_price"
              class="block mt-1 w-full"
              name="discounted_price"></x-input>
 </div>
