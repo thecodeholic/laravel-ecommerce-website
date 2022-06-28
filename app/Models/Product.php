@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['title', 'description', 'price', 'discount_pct', 'discounted_price'];
+
     public function getCreatedAt()
     {
         return datetime_format($this->created_at);
