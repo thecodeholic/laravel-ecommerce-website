@@ -24,6 +24,11 @@ class Product extends Model
 
     public function getPrice()
     {
-        return currency_format($this->price);
+        return $this->price ? currency_format($this->price) : null;
+    }
+
+    public function getDiscountedPrice()
+    {
+        return $this->discounted_price ? currency_format($this->discounted_price) : null;
     }
 }

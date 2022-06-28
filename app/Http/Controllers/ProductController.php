@@ -74,7 +74,10 @@ class ProductController extends Controller
     {
         $product->update([
             'title' => $request->title,
-            'description' => $request->description
+            'description' => $request->description,
+            'price' => $request->price,
+            'discount_pct' => $request->discount_pct,
+            'discounted_price' => $request->discounted_price,
         ]);
 
         return redirect()->route('products.index')->with('message', 'Product Updated Successfully');

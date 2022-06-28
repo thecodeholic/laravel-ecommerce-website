@@ -26,7 +26,9 @@ class StoreProductRequest extends FormRequest
         return [
             'title' => 'required|max:2000',
             'description' => 'required',
-            'price' => 'required|numeric'
+            'price' => 'required|numeric|min:0',
+            'discount_pct' => 'nullable|numeric|min:1',
+            'discounted_price' => 'nullable|numeric|min:0'
         ];
     }
 }
