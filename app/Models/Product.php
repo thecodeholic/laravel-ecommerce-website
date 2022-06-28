@@ -12,16 +12,16 @@ class Product extends Model
 
     public function getCreatedAt()
     {
-        return Carbon::parse($this->created_at)->format(config('app.datetime_format'));
+        return datetime_format($this->created_at);
     }
 
     public function getUpdatedAt()
     {
-        return Carbon::parse($this->updated_at)->format(config('app.datetime_format'));
+        return datetime_format($this->updated_at);
     }
 
     public function getPrice()
     {
-        return config('app.currency_symbol').number_format($this->price, 2);
+        return currency_format($this->price);
     }
 }
