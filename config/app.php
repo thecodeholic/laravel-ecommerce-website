@@ -212,4 +212,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'date_format' => 'm/d/Y',
+    'datetime_format' => 'm/d/Y H:i:s',
+    'currency_symbol' => '$'
 ];

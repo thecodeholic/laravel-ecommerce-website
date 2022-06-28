@@ -693,6 +693,39 @@ select {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+
+  .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+
+  .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+
+  .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+
+  .container {
+    max-width: 1536px;
+  }
+}
 .btn-primary {
   border-radius: 0.25rem;
   --tw-bg-opacity: 1;
@@ -846,6 +879,9 @@ select {
 .mt-6 {
   margin-top: 1.5rem;
 }
+.mr-1 {
+  margin-right: 0.25rem;
+}
 .-ml-\[200px\] {
   margin-left: -200px;
 }
@@ -887,6 +923,9 @@ select {
 }
 .h-6 {
   height: 1.5rem;
+}
+.h-4 {
+  height: 1rem;
 }
 .h-\[30px\] {
   height: 30px;
@@ -930,6 +969,12 @@ select {
 .w-\[30px\] {
   width: 30px;
 }
+.w-4 {
+  width: 1rem;
+}
+.w-\[160px\] {
+  width: 160px;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -938,6 +983,9 @@ select {
 }
 .max-w-6xl {
   max-width: 72rem;
+}
+.max-w-\[200px\] {
+  max-width: 200px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -950,6 +998,10 @@ select {
 }
 .origin-top-right {
   transform-origin: top right;
+}
+.rotate-90 {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .scale-95 {
   --tw-scale-x: .95;
@@ -1002,6 +1054,15 @@ select {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 .break-all {
   word-break: break-all;
@@ -1087,6 +1148,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
@@ -1106,6 +1171,18 @@ select {
 .bg-black\/10 {
   background-color: rgb(0 0 0 / 0.1);
 }
+.bg-purple-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 51 234 / var(--tw-bg-opacity));
+}
+.bg-indigo-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+.bg-gray-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
+}
 .fill-current {
   fill: currentColor;
 }
@@ -1114,6 +1191,9 @@ select {
 }
 .p-4 {
   padding: 1rem;
+}
+.p-3 {
+  padding: 0.75rem;
 }
 .p-5 {
   padding: 1.25rem;
@@ -1194,6 +1274,9 @@ select {
 .pb-4 {
   padding-bottom: 1rem;
 }
+.text-left {
+  text-align: left;
+}
 .text-center {
   text-align: center;
 }
@@ -1220,11 +1303,18 @@ select {
   font-size: 1rem;
   line-height: 1.5rem;
 }
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
 .font-medium {
   font-weight: 500;
 }
 .font-semibold {
   font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
 }
 .uppercase {
   text-transform: uppercase;
@@ -1430,6 +1520,14 @@ body {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
+.hover\:bg-blue-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -1448,6 +1546,13 @@ body {
 }
 .hover\:bg-black\/10:hover {
   background-color: rgb(0 0 0 / 0.1);
+}
+.hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+.hover\:bg-opacity-95:hover {
+  --tw-bg-opacity: 0.95;
 }
 .hover\:text-gray-500:hover {
   --tw-text-opacity: 1;
@@ -1552,6 +1657,14 @@ body {
 .active\:bg-emerald-700:active {
   --tw-bg-opacity: 1;
   background-color: rgb(4 120 87 / var(--tw-bg-opacity));
+}
+.active\:bg-blue-700:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+.active\:bg-red-700:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 .active\:bg-emerald-800:active {
   --tw-bg-opacity: 1;
