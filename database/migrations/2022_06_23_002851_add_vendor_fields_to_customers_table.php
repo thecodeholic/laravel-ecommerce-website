@@ -44,7 +44,24 @@ return new class extends Migration
     public function down()
     {
         Schema::table('customers', function (Blueprint $table) {
-            //
+            $table->dropColumn('company_name');
+            $table->dropColumn('vat_number');
+            $table->dropColumn('phone2');
+            $table->dropColumn('type');
+            $table->dropColumn('account_name');
+            $table->dropColumn('sort_code');
+            $table->dropColumn('account_number');
+            $table->dropColumn('iban');
+            $table->dropColumn('swift');
+            $table->dropColumn('bank_name');
+            $table->dropColumn('address1');
+            $table->dropColumn('address2');
+            $table->dropColumn('address3');
+            $table->dropColumn('status');
+            $table->dropColumn('personal_id');
+            $table->dropTimestamps();
+            $table->dropForeignIdFor(User::class, 'created_by');
+            $table->dropForeignIdFor(User::class, 'updated_by');
         });
     }
 };
