@@ -20,6 +20,7 @@ class ProductFactory extends Factory
             'title' => fake()->text(),
             'description' => fake()->realText(2000),
             'price' => fake()->numberBetween(100, 1000),
+            'stock_quantity' => fake()->numberBetween(1, 10),
             'created_at' => now(),
             'updated_at' => now(),
             'created_by' => 1,
