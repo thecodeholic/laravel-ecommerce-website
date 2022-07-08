@@ -9,10 +9,10 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->group(function () {
-    Route::middleware(['auth'])->group(function () {
+    Route::middleware(['admin.auth'])->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index']);
     });
-    Route::middleware(['guest'])->group(function () {
+    Route::middleware(['admin.guest'])->group(function () {
         Route::get('/login', [\App\Http\Controllers\Admin\LoginController::class, 'form'])
             ->name('admin.login');
         Route::post('/login', [\App\Http\Controllers\Admin\LoginController::class, 'login']);
