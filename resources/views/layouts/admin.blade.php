@@ -1,3 +1,5 @@
+@props(['title' => false])
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full">
 <head>
@@ -184,8 +186,18 @@
 
 <main class="flex flex-1">
     @include('admin.sidebar')
-    <div class="flex flex-1 p-4">
-        {{ $slot }}
+    <div class="flex-1 p-4">
+        <div class="flex justify-between items-center">
+            @if (isset($header) and $header)
+                {{$header}}
+            @elseif(isset($title))
+                <h1 class="text-2xl text-gray-700 font-bold mb-6">{{$title}}</h1>
+            @endif
+        </div>
+
+        <div class="bg-white p-3 rounded-md shadow-md">
+            {{ $slot }}
+        </div>
     </div>
 </main>
 

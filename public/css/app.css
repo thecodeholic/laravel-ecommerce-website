@@ -997,6 +997,9 @@ select {
 .w-\[30px\] {
   width: 30px;
 }
+.w-16 {
+  width: 4rem;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -1085,6 +1088,9 @@ select {
 }
 .overflow-x-hidden {
   overflow-x: hidden;
+}
+.overflow-ellipsis {
+  text-overflow: ellipsis;
 }
 .text-ellipsis {
   text-overflow: ellipsis;
@@ -1571,9 +1577,16 @@ body {
 .table-sm>thead>tr>th {
     padding: 0.25rem;
 }
+.hover\:border:hover {
+  border-width: 1px;
+}
 .hover\:border-gray-300:hover {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+.hover\:border-gray-800:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(31 41 55 / var(--tw-border-opacity));
 }
 .hover\:bg-green-400:hover {
   --tw-bg-opacity: 1;

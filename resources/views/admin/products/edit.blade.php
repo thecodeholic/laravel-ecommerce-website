@@ -1,6 +1,6 @@
-<x-vendor-layout>
+<x-admin-layout>
     <x-slot name="header">
-        <h1 class="text-3xl font-semibold mb-6">Update Product: "{{ $product->title }}"</h1>
+        <h1 class="text-2xl font-semibold whitespace-nowrap overflow-ellipsis mb-6">Update Product: "{{ $product->title }}"</h1>
         <form class="block" action="{{ route('products.destroy', $product) }}" method="POST"
               onsubmit="return confirm('{{ trans('Are You Sure you want to delete the product? ') }}');">
 
@@ -30,8 +30,8 @@
         @csrf
         @method('PUT')
 
-        @include('products.form')
+        @include('admin.products.form')
 
         <x-button>Submit</x-button>
     </form>
-</x-vendor-layout>
+</x-admin-layout>

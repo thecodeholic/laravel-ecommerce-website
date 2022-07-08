@@ -1,6 +1,6 @@
-<x-vendor-layout>
+<x-admin-layout>
     <x-slot name="header">
-        <h1 class="text-3xl font-bold mb-6">My Products</h1>
+        <h1 class="text-2xl text-gray-700 font-bold mb-6">My Products</h1>
         <x-button-link href="{{ route('products.create') }}">
             Create new Product
         </x-button-link>
@@ -29,23 +29,12 @@
                     <div x-data="{open: false}">
                         <button
                             @click="open = !open"
-                            class="inline-flex items-center py-1 px-2 bg-gray-600 hover:bg-opacity-95 text-white text-sm rounded-md shadow"
+                            class="inline-flex items-center w-8 h-8 py-1 px-2 border border-transparent hover:border-gray-800  text-sm rounded-md"
                         >
-                            Actions
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="h-4 w-4 ml-1 transition-all"
-                                :class="{'rotate-90': open}"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                stroke-width="2"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9 5l7 7-7 7"
-                                />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
                             </svg>
                         </button>
                         <ul
@@ -136,4 +125,4 @@
     <div class="mt-3">
         {{ $products->links() }}
     </div>
-</x-vendor-layout>
+</x-admin-layout>

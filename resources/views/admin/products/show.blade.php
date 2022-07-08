@@ -1,4 +1,4 @@
-<x-vendor-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h1 class="text-3xl font-semibold mb-6">Product Details</h1>
         <form class="block" action="{{ route('products.destroy', $product) }}" method="POST"
@@ -60,4 +60,4 @@
         <h3 class="font-semibold text-lg">Update Date</h3>
         <p>{{$product->getUpdatedAt()}}</p>
     </div>
-</x-vendor-layout>
+</x-admin-layout>
